@@ -12,7 +12,7 @@ import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.linkText;
 
 
-public class StepsTest{
+public class StepsTest  {
 
     private static final String REPOSITORY = "eroshenkoam/allure-example";
     private static final int ISSUE = 84;
@@ -33,7 +33,7 @@ public class StepsTest{
         step("Кликаем по ссылке " + REPOSITORY, () -> {
             $(linkText(REPOSITORY)).click();
         });
-        step("Открываем таб Issues " , () -> {
+        step("Открываем таб Issues ", () -> {
             $("#issues-tab").click();
         });
         step("Проверяем наличие Issies с номером " + ISSUE, () -> {
@@ -43,13 +43,14 @@ public class StepsTest{
 
     @Test
     public void testAnnotatedStep() {
-        WebSteps steps = new WebSteps();
         SelenideLogger.addListener("allure", new AllureSelenide());
+        WebSteps steps = new WebSteps();
 
-        steps.openMainPage();
-        steps.searchForRepository(REPOSITORY);
-        steps.clickOnRepositoryLink(REPOSITORY);
-        steps.openIssueTab();
-        steps.shouldSeeIssueWithNumber(ISSUE);
+        steps
+                .openMainPage()
+                .searchForRepository(REPOSITORY)
+                .clickOnRepositoryLink(REPOSITORY)
+                .openIssueTab()
+                .shouldSeeIssueWithNumber(ISSUE);
     }
 }
