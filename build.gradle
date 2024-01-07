@@ -1,0 +1,67 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.11.2'
+}
+
+group = 'qa.quru'
+version = '1.0-SNAPSHOT'
+
+allure {
+    version.set("2.19.0")
+    adapter {
+        // Configure version for io.qameta.allure:allure-* adapters
+        // It defaults to allure.version
+        allureJavaVersion.set("2.19.0")
+        aspectjVersion.set("1.9.5")
+
+        // Customize environment variables for launching Allure
+        environment.put("JAVA_HOME", "/path/to/java_home")
+
+        autoconfigure.set(true)
+        autoconfigureListeners.set(true)
+        aspectjWeaver.set(true)
+
+        // By default, categories.json is detected in src/test/resources/../categories.json,
+        // However, it would be better to put the file in a well-known location and configure it explicitly
+        categoriesFile.set(layout.projectDirectory.file("config/allure/categories.json"))
+        frameworks {
+            junit5 {
+                // Defaults to allureJavaVersion
+                adapterVersion.set("2.19.0")
+                enabled.set(true)
+                // Enables allure-junit4 default test listeners via META-INF/services/...
+                autoconfigureListeners.set(true)
+            }
+            junit4 {
+                // same as junit5
+            }
+            testng {
+                // same as junit5
+            }
+            spock
+            cucumberJvm
+            // Alternative syntax: cucumberJvm(2) {...}
+            cucumber2Jvm
+            cucumber3Jvm
+            cucumber4Jvm
+            cucumber5Jvm
+            cucumber6Jvm
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(
+            'org.junit.jupiter:junit-jupiter-engine:5.10.1',
+            'com.codeborne:selenide:7.0.4',
+            'io.qameta.allure:allure-selenide:2.25.0'
+    )
+}
+
+test {
+    useJUnitPlatform()
+}
