@@ -12,7 +12,7 @@ import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.linkText;
 
 
-public class StepsTest {
+public class StepsTest{
 
     private static final String REPOSITORY = "eroshenkoam/allure-example";
     private static final int ISSUE = 84;
@@ -20,24 +20,36 @@ public class StepsTest {
     @Test
     public void testLambdaStep() {
         SelenideLogger.addListener("allure", new AllureSelenide()); // подключение селенид для allure
-
-        step("Открываем главную страницу", () -> {
+        //лямбда функция сокращает вызов, кр если есть класс и в нем 1 метод, то можно ее использовать вот так ()->{}
+        step("Открываем главную страницу ", () -> {
             open("https://github.com/");
         });
-        step("Ищем репозиторий" + REPOSITORY, () -> {
+        step("Ищем репозиторий " + REPOSITORY, () -> {
             $(".search-input").click();
             $("#query-builder-test").sendKeys(REPOSITORY);
             $("#query-builder-test").submit();
 
         });
-        step("Кликаем по ссылке" + REPOSITORY, () -> {
+        step("Кликаем по ссылке " + REPOSITORY, () -> {
             $(linkText(REPOSITORY)).click();
         });
-        step("Открываем таб Issues", () -> {
+        step("Открываем таб Issues " , () -> {
             $("#issues-tab").click();
         });
-        step("Проверяем наличие Issies с номером" + ISSUE, () -> {
+        step("Проверяем наличие Issies с номером " + ISSUE, () -> {
             $(withText("#" + ISSUE)).should(Condition.exist);
         });
+    }
+
+    @Test
+    public void testAnnotatedStep() {
+        WebSteps steps = new WebSteps();
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
+        steps.openMainPage();
+        steps.searchForRepository(REPOSITORY);
+        steps.clickOnRepositoryLink(REPOSITORY);
+        steps.openIssueTab();
+        steps.shouldSeeIssueWithNumber(ISSUE);
     }
 }
