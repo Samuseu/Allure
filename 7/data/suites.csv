@@ -1,0 +1,8 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Jan 08 12:23:43 GMT 2024","Mon Jan 08 12:23:46 GMT 2024","2469","","qa.quru.allure.AttachmentsTest","","qa.quru.allure.AttachmentsTest","testLambdaAttachments","testLambdaAttachments()",""
+"passed","Mon Jan 08 12:23:46 GMT 2024","Mon Jan 08 12:23:47 GMT 2024","1057","","qa.quru.allure.AttachmentsTest","","qa.quru.allure.AttachmentsTest","testAnnotatedAttachments","testAnnotatedAttachments()",""
+"passed","Mon Jan 08 12:23:47 GMT 2024","Mon Jan 08 12:23:47 GMT 2024","2","","qa.quru.allure.LabelsTest","","qa.quru.allure.LabelsTest","testDynamiclabels","Создание Issue для авторизованного пользователя",""
+"passed","Mon Jan 08 12:23:47 GMT 2024","Mon Jan 08 12:23:47 GMT 2024","1","","qa.quru.allure.LabelsTest","","qa.quru.allure.LabelsTest","testStaticLabels","Создание Issue для авторизованного пользователя",""
+"passed","Mon Jan 08 12:23:53 GMT 2024","Mon Jan 08 12:23:55 GMT 2024","1987","","qa.quru.allure.StepsTest","","qa.quru.allure.StepsTest","testLambdaStep","testLambdaStep()",""
+"passed","Mon Jan 08 12:23:47 GMT 2024","Mon Jan 08 12:23:51 GMT 2024","3727","","qa.quru.allure.SelenideTest","","qa.quru.allure.SelenideTest","testIssueSearch","testIssueSearch()",""
+"passed","Mon Jan 08 12:23:51 GMT 2024","Mon Jan 08 12:23:53 GMT 2024","2103","","qa.quru.allure.StepsTest","","qa.quru.allure.StepsTest","testAnnotatedStep","testAnnotatedStep()",""
